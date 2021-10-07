@@ -4,7 +4,9 @@ public class Main {
         CSVManager shiptest = new CSVManager();
 
         shiptest.reset();
-        System.out.println("Complete");
+        //System.out.println("Complete");
+
+        shiptest.print();
 
     }
 }
