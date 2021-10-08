@@ -1,5 +1,6 @@
 import java.io.*;
 import java.nio.Buffer;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -61,6 +62,41 @@ public class CSVManager {
             br.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<String[]> assignToArrayList(ArrayList<String[]> anArrayList){
+        String line = "";
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("Ship.csv"));
+
+            while ((line = br.readLine()) != null){
+                String[] values = line.split(",");
+                anArrayList.add(values);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return anArrayList;
+    }
+
+    public void updateCSVFile(ArrayList<String[]> anArrayList){
+
+        try {
+            FileWriter csvWriter = new FileWriter("Ship.csv");
+
+            for(String[] content : anArrayList){
+                csvWriter.append(String.join(",", content));
+                csvWriter.append("\n");
+            }
+            csvWriter.flush();
+            csvWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
