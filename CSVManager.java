@@ -101,4 +101,21 @@ public class CSVManager {
             e.printStackTrace();
         }
     }
+
+    public void transferArray(ArrayList<String[]> anArrayList1, ArrayList<String[]> anArrayList2, int num, String name){
+        String[] temp = anArrayList1.get(num);
+        //temp[5] = String.class.getName();
+        temp[5] = name;
+        anArrayList2.add(temp);
+        anArrayList1.remove(num);
+    }
+
+    //0=object,1=length,2=width,3=height,4=description,5=location
+    public void printArrayList(ArrayList<String[]> anArrayList1){
+        for(int i = 0; i < anArrayList1.size(); i++){
+            System.out.println("Name of object: " + anArrayList1.get(i)[0]+
+                    ", Dimensions: " + anArrayList1.get(i)[1] + "x" + anArrayList1.get(i)[2] + "x" + anArrayList1.get(i)[3] +
+                    ", Description: " + anArrayList1.get(i)[4] + ", Location: " + anArrayList1.get(i)[5]);
+        }
+    }
 }
